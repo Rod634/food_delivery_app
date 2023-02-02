@@ -1,3 +1,4 @@
+import 'package:dw9_delivery_app/app/core/provider/application_biding.dart';
 import 'package:dw9_delivery_app/app/core/ui/theme/theme_config.dart';
 import 'package:dw9_delivery_app/app/pages/splash/splash_page.dart';
 import 'package:flutter/material.dart';
@@ -7,12 +8,14 @@ class DeliveryApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Delivery App',
-      theme: ThemeConfig.theme,
-      routes: {
-        '/': (context) => const SplashPage(),
-      },
+    return ApplicationBiding(
+      child: MaterialApp(
+        title: 'Delivery App',
+        theme: ThemeConfig.theme,
+        routes: {
+          '/': (context) => const SplashPage(),
+        },
+      ),
     );
   }
 }
