@@ -1,3 +1,5 @@
+import 'package:dw9_delivery_app/app/models/product_model.dart';
+import 'package:dw9_delivery_app/app/pages/home/widgets/delivery_product_tile.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/ui/widgets/delivery_appbar.dart';
@@ -8,10 +10,28 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: DeliveryAppbar(),
-      body: Container(
-        child: Text('za´za'),
-      ),
-    );
+        appBar: DeliveryAppbar(),
+        body: Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  return DeliveryProductTile(
+                    product: ProductModel(
+                      id: 1,
+                      description:
+                          'Lanche acompanha pão, hambúguer, mussarela, alface, tomate e maionese',
+                      name: 'X-Salada',
+                      image:
+                          'https://assets.unileversolutions.com/recipes-v2/106684.jpg?imwidth=800',
+                      price: 15.0,
+                    ),
+                  );
+                },
+                itemCount: 5,
+              ),
+            )
+          ],
+        ));
   }
 }
