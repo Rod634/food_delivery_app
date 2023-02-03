@@ -14,10 +14,12 @@ import '../../core/ui/widgets/delivery_increment_decrement_Button.dart';
 
 class ProductDetail extends StatefulWidget {
   final ProductModel product;
+  final OrderProductDto? order;
 
   const ProductDetail({
     super.key,
     required this.product,
+    this.order,
   });
 
   @override
@@ -26,6 +28,13 @@ class ProductDetail extends StatefulWidget {
 
 class _ProductDetailState
     extends BaseState<ProductDetail, ProductDetailController> {
+  @override
+  void initState() {
+    super.initState();
+    final amount = widget.order?.amount ?? 1;
+    controller.initial(amount, widget.order != null);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

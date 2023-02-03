@@ -9,8 +9,13 @@ import 'package:provider/provider.dart';
 
 class DeliveryProductTile extends StatelessWidget {
   final ProductModel product;
+  final OrderProductDto? orderProductDto;
 
-  const DeliveryProductTile({super.key, required this.product});
+  const DeliveryProductTile({
+    super.key,
+    required this.product,
+    this.orderProductDto,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +24,10 @@ class DeliveryProductTile extends StatelessWidget {
         final controller = context.read<HomeController>();
         final orderProduct = await Navigator.of(context).pushNamed(
           '/productDetail',
-          arguments: {'product': product},
+          arguments: {
+            'product': product,
+            'order': orderProductDto,
+          },
         );
 
         if (orderProduct != null) {

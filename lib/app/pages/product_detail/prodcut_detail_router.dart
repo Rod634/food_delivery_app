@@ -12,7 +12,10 @@ class ProdcutDetailRouter {
           final args = ModalRoute.of(context)!.settings.arguments
               as Map<String, dynamic>;
 
-          return ProductDetail(product: args['product']);
+          return ProductDetail(
+            product: args['product'],
+            order: args['order'],
+          );
         },
       );
 }
